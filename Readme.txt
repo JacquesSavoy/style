@@ -1,8 +1,10 @@
+
 This repository contains the datasets and codes of my last book.
 
-mainly we have a directory
+In this directory, one can find
 
-1) on examples with the Stylo package with the corpus Federalist papers
-2) on chapters of my book
+   A subdirectory for each pertinent chapter.
 
+   The 'Federalist' directory containing  82 text files, one for each Federalist Papers article
 
+   Licence, a GNU general public license v3.0
