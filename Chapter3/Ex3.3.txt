@@ -1,0 +1,24 @@
+
+Exercises #3.3: Step by Step Delta computation
+                Instances-based computation
+
+
+The roadmap is the following.
+
+
+Step 1:  Load and tokenise the corpus from the specified data directory
+
+Step 2:  Subdivide the corpus according to the authors
+
+Step 3:  Extract articles H59, H60, H61, H65, M37, M38, M47, M48 and Q54
+         Select six word-types (the, of, to, in, and, a)
+         To represent those articles with relative frequencies
+
+Step 4:  For each selected word-types, compute the mean and standard deviation
+         Represent each chosen articles according to their Z scores
+
+Step 5:  Compute the Delta score for each articles
+         You can solve this by writing a user-defined function
+
+
+

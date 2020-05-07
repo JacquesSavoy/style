@@ -1,0 +1,92 @@
+#
+# R code needed to generate Figure 3.2
+#
+# Read the data
+#
+data <- read.table("DataTable3.7.txt", header=T, row.names=1) 
+#
+# Not too much decimal digits
+#
+options(digits=4)
+#
+# Model PCA
+# Data must be centered and reduced (z-score)
+#
+voc.pca <- prcomp(t(data), scale=T)
+summary(voc.pca)
+#
+#  Plot
+# 
+plot(voc.pca$x[,1], voc.pca$x[,2], pch=1,
+   xlab="First Principal Component (74.3%)",
+   ylab="Second Principal Component (17.3%)")
+#
+# And a vertical and horizontal line
+abline(v=0)
+abline(h=0)
+
+#
+# Color the points according to the author
+#
+pt = 19
+points(voc.pca$x[1:4,1],  voc.pca$x[1:4,2],  pch=pt, col="red")
+points(voc.pca$x[5:8,1],  voc.pca$x[5:8,2],  pch=pt, col="blue")
+points(voc.pca$x[9:10,1], voc.pca$x[9:10,2], pch=pt, col="black")
+#
+# Add the label for each point
+#
+text(voc.pca$x[1:4,1], voc.pca$x[1:4,2],  cex=1.5,
+        col="red", labels=dimnames(data)[[2]][1:4])
+text(voc.pca$x[5:8,1], voc.pca$x[5:8,2],  cex=1.5,
+        col="blue", labels=dimnames(data)[[2]][5:8])
+text(voc.pca$x[9:10,1], voc.pca$x[9:10,2], cex=1.5,
+        col="black", labels=dimnames(data)[[2]][9:10])
+
+#
+# Define the Euclidian distance function
+# for two points
+#
+distance <- function(x1, y1, x2, y2){
+   return(sqrt((x2-x1)^2 + (y2 - y1)^2))
+   }
+#
+# Select the first two principal components
+#
+x <- voc.pca$x[,1]
+y <- voc.pca$x[,2]
+#
+# Compute the distance with the first query text 
+#
+myDist1 <- numeric(8)
+for (anIndex in 1:8) {
+   myDist1[anIndex] <- distance(x[9],y[9], x[anIndex], y[anIndex])
+   }
+#
+# Which article is the closest?
+#
+aMin1 <- order(myDist1)[1]
+#
+# Draw a line with this closest article
+#
+segments(x[9], y[9], x[aMin1], y[aMin1],
+         col="darkgreen", lwd=2, lty="dashed")
+
+#
+# Compute the distance with the second query text 
+#
+myDist2 <- numeric(8)
+for (anIndex in 1:8) {
+   myDist2[anIndex] <- distance(x[10],y[10], x[anIndex], y[anIndex])
+}
+#
+# Which article is the second closest?
+#
+aMin2 <- order(myDist2)[1]
+#
+# Draw a line with this closest article
+#
+segments(x[10], y[10], x[aMin2], y[aMin2],
+         col="darkgreen", lwd=2, lty="dashed")
+#
+#
+#

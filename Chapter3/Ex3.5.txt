@@ -1,0 +1,26 @@
+
+Exercises #3.5: Step by Step computation of the KLD model
+
+
+The roadmap is the following.
+
+
+Step 1:  Load and tokenise the corpus from the specified data directory
+
+Step 2:  Subdivide the corpus according to the authors
+
+Step 3:  Extract articles H59, H60, H61, H65, M37, M38, M47, M48 and Q54
+         Select six word-types (the, of, to, in, and, a)
+         To represent those articles and the query text with relative frequencies
+         but the length corresponds to the total number of the six words.
+
+Step 4:  Define a user-defined function to compute the KLD between two vectors
+         Control that each vector contains probabilities and
+         the sum of their components must be 1.0.
+
+Step 5:  Compute the KLD between the training articles and the query text.
+         Display the KLD values for each article in the training set.
+         Which is the achieved attribution?
+
+
+

@@ -1,0 +1,23 @@
+
+Exercises #3.3: Step by Step Delta computation
+                Instances-based computation
+
+
+The roadmap is the following.
+
+
+Step 1:  Load and tokenise the corpus from the specified data directory
+
+Step 2:  Subdivide the corpus according to the authors
+
+Step 3:  Extract the top 50 most frequent word-type
+         Represent each article with their relative frequencies
+
+Step 4:  For each selected word-types, compute the mean and standard deviation
+         Represent each chosen articles according to their Z scores
+
+Step 5:  Compute the Delta score for each articles
+         Based on the top 50 most frequent word-types
+
+
+
