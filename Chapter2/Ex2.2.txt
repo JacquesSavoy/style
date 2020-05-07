@@ -1,0 +1,23 @@
+
+Exercises #2.2: Provide some overall statistics about the corpus
+
+
+The roadmap is the following.
+
+
+Step 1:  Load, tokenise and subdivide the corpus (see SolutionEx1.r)
+
+Step 2:  Identify the top 50 most frequent words in the training part
+         Return the list of those words with their absolute frequency in the corpus
+
+Step 3:  Identify the entire vocabulary present in the training set
+         Indicate the vocabulary size and the total number of tokens
+
+Step 4:  Indicate the vocabulary size and the total number of tokens per author
+         Indicate the top ten most frequent words per author
+             with their absolute and relative frequency
+
+         You can verify the Zipf's law for the most frequent words.
+
+
+You can compare your results with the values reported in Table 2.2 and Table 2.3 in the book.
