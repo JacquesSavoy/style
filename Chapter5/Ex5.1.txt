@@ -1,0 +1,26 @@
+
+Exercises #5.1: Text representation based on n-grams of letters
+
+
+The roadmap is the following.
+
+
+Step 1:  Load and tokenize the corpus from the specified data directory.
+
+Step 2:  Subdivide the corpus according to the training set (Hamilton & Madison)
+         and for the test set, only Q54 and Q55
+
+Step 3:  Generate a representation based on trigrams of letters
+            for both the training and test samples.
+         Select as final feature set, the 200 most frequent letter trigrams.
+
+Step 4:  Write two user-defined functions to compute the Manhattan and Euclidian distance.
+
+Step 5:  Apply the two distance functions to the two articles in the test set
+            and consider all texts in the training set.
+
+Step 6:  As output, present just the closest article with the distance.
+         
+
+
+
