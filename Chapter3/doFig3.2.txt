@@ -1,0 +1,115 @@
+#
+#  R code to generate Figure 3.2
+#
+# Read the data
+mydata <- read.table("DataTable3.7.txt", header=T, row.names=1) 
+#
+# Specify the authors
+#
+author    <- c("H", "H", "H", "H", "M", "M", "M", "M",  "Q", "Q")
+authorCol <- c(rep(1,4), rep(2,4), rep(3,2))
+#
+# Number of texts
+nbText <- dim(mydata)[2]
+#
+# Compute the mean / sd per row 
+#
+sumRow      <- apply(mydata,1,sum)
+mean.mydata <- sumRow/nbText
+sd.mydata   <- apply(mydata,1, sd)
+#
+# Standardize the data frame (manually)
+#
+mydata.Centered <- mydata-mean.mydata
+mydata.Zscore   <- (mydata-mean.mydata) / sd.mydata
+#
+#  On row the terms,  on column the texts
+#
+options(digits=6)
+#
+# Model two in Binonga  (data are centered and reduced (z-score))
+#
+voc.pc <- prcomp(t(mydata.Zscore), scale=T, center=T)
+summary(voc.pc)
+length(voc.pc$x[,1])
+#
+#  Biplot
+# 
+par(mar=c(4, 1, 1, 1))
+biplot(voc.pc, scale = T, var.axes=F, cex=c(0, 0),
+   col=c("white","black"),
+   xlabs=dimnames(mydata)[[2]],
+   ylabs=dimnames(mydata)[[1]], 
+   xlab="First Principal Component (74.3%)",
+   ylab="Second Principal Component (17.3%)", 
+   main="")
+#
+# Draw the horizontal & vertical line
+abline(h=0)
+abline(v=0)
+#
+#  The two authors & the disputed papers
+#
+aMultX=1.2; aMultY=2.55; aFontSize = 1.5
+# Hamilton's papers
+points(aMultX*voc.pc$x[1:4,1],  aMultY*voc.pc$x[1:4,2],  
+   pch=18, col="red", cex=aFontSize)
+# Madison's papers  
+points(aMultX*voc.pc$x[5:8,1],  aMultY*voc.pc$x[5:8,2],  
+   pch=20, col="blue", cex=aFontSize)
+# the two query texts
+points(aMultX*voc.pc$x[9:10,1], aMultY*voc.pc$x[9:10,2], 
+   pch=17, col="darkgreen", cex=aFontSize)
+#
+# And the labels
+#
+aFontSize = 1.1
+# Hamilton's articles
+text(aMultX*voc.pc$x[1:4,1],  aMultY*voc.pc$x[1:4,2],
+     cex=aFontSize, col="black", adj=c(0.5, -0.5),
+     labels=dimnames(mydata)[[2]][1:4])
+     
+# Madison's articles   
+text(aMultX*voc.pc$x[5:8,1],  aMultY*voc.pc$x[5:8,2],
+     cex=aFontSize, col="black", adj=c(0.5, -0.5),
+     labels=dimnames(mydata)[[2]][5:8])
+     
+# Disputed articles    
+text(aMultX*voc.pc$x[9:10,1], aMultY*voc.pc$x[9:10,2],
+    cex=aFontSize, col="black", adj=c(0.5, -0.5),
+    labels=dimnames(mydata)[[2]][9:10])
+#
+# Define the Euclidian distance function
+#
+distance <- function(x1, y1, x2, y2) {
+          return ( sqrt((x2-x1)^2 + (y2 - y1)^2) )
+          }
+
+x <- voc.pc$x[,1]
+y <- voc.pc$x[,2]
+#
+# The training points are the first ones
+#
+myDist1 <- 1:8
+# 
+# The first query text
+for (anIndex in 1:8) {
+   myDist1[anIndex] <- distance(x[9],y[9],x[anIndex],y[anIndex])
+   }
+aMin1 <- order(myDist1)[1]
+segments(aMultX*x[9], aMultY*y[9],
+        aMultX*x[aMin1], aMultY*y[aMin1],
+        col="black", lwd=2, lty="dashed")
+#
+# For the second query text
+#
+myDist2 <- 1:8
+for (anIndex in 1:8) {
+   myDist2[anIndex] <- distance(x[10],y[10],x[anIndex],y[anIndex])
+   }
+aMin2 <- order(myDist2)[1]
+segments(aMultX*x[10], aMultY*y[10],
+        aMultX*x[aMin2], aMultY*y[aMin2],
+        col="black", lwd=2, lty="dashed")
+
+
