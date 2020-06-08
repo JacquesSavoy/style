@@ -1,0 +1,22 @@
+
+Exercises #2.1: Be able to load the STYLO package
+                and to load the corpus
+
+
+The roadmap is the following.
+
+
+Step 1:  Load the corpus from the specified data directory.
+
+Step 2:  Tokenize the corpus.
+
+Step 3:  Subdivide the corpus according: 
+         - the training set (formed by articles written by Hamilton, Madison, or Jay)
+         - the test set (12 disputed articles)
+
+         Subdivide the training set according to the three authors
+         51 articles by Hamilton
+         14 articles by Madison
+          5 articles by Jay
+
+The solution of this exercise will form the header for all other exercises.

@@ -1,0 +1,17 @@
+
+Exercises #2.3: Explore the Zipf's law for words having a low frequency
+
+
+The roadmap is the following.
+
+
+Step 1:  Load, tokenize, and subdivide the corpus (see SolutionEx1.r).
+
+Step 2:  Subdivide the training corpus into three parts according to the three authors.
+
+Step 3:  Exploring the Zipf's law for each author.
+         Indicate the number of hapax (words appearing once) and their proportion.
+         Do the same for the words appearing twice (dis) or three times.
+         Indicate the number of words occurring five times or less and their proportion.
+
+You can compare your results with the values reported in Table 2.4 in the book.
