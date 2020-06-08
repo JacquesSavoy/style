@@ -1,0 +1,60 @@
+#
+# Exercise 4.2:  Statistical analysis and test
+#
+# The t-test 
+#
+#  H0: Assuming that:
+#     System A performs at the same level than System B
+#
+options(digits=5)
+#
+# STEP 1:  Load the dataset
+#
+myData <- read.table("SystemAB.txt", header=T)
+# View the data
+myData
+#
+# To simplify the calls with the different variables 
+# included in the dataframe myData.
+attach(myData)
+#
+# STEP 2
+# The mean performance of the two systems
+#
+mean(A)
+mean(B)
+# And the variances
+var(A)
+var(B)
+#
+# System A presents a higher mean (a better effectiveness)
+#   and a higher variance
+#
+#
+# STEP 3
+# Apply the t-test, 
+# Two-sided test, same variance
+#
+t.test(A, B, var.equal=TRUE, alternative="two.sided")
+#
+# The p-value is low and lower than 5%
+# The two systems do not perfrom at the same level
+#
+# STEP 4
+# Assuming that the two variances are not the same
+#
+t.test(A, B, var.equal=FALSE, alternative="two.sided")
+#
+# The p-value is higher but still lower than 5%
+#
+# STEP 5
+# One can assume that System A must perfom better than B
+# One-sided test.
+#
+t.test(A, B, var.equal=TRUE, alternative="greater")
+#
+# The p-value is clearly lower than 5%
+#
+#
+# End of Exercise 4.2
+#

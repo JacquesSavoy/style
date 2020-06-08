@@ -1,0 +1,51 @@
+#
+# Exercise 4.1:  Statistical analysis and test
+#
+# Sign test 
+#
+#  H0: Assuming that:
+#     System A performs at the same level than System B
+#
+options(digits=4)
+#
+# STEP 1: Load the dataset
+#
+myData <- read.table("SystemAB.txt", header=T)
+dim(myData)
+# View the data
+myData[1:5,]
+#
+# STEP 2
+# How many experiments produce a different output for both systems?
+n <- sum(myData$A != myData$B)
+#
+# STEP 3
+# How many times System A performs better than System B?
+na <- sum(myData$A > myData$B)
+#
+# STEP 4
+# Apply the sign test (prob = 0.5)
+# if for n experiemnts, we obtain na times a better result for A ...
+#
+binom.test(na, n, 0.5)
+# The p-value < 0.05 (or 5%).
+# The performance difference is stastistically significant.
+#
+# STEP 5
+# And when n = 20 and na = 9
+# We have more or less the same number for experiements
+#    for which A is better than B
+binom.test(9, 20, 0.5)
+#
+# The p-value is high (0.8) and > than 0.05.
+# The performance difference is not significant.
+#
+# And with n = 20, na = 2
+binom.test(2, 20, 0.5)
+#
+# The p-value is very low (0.0004) and < than 0.05.
+# The performance difference is statistically significant.
+
+#
+# End of Exercise 4.1
+#
