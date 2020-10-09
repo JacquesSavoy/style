@@ -1,0 +1,26 @@
+
+Exercise #3.6: Difference measures of distance / similarity
+
+
+The roadmap is the following.
+
+
+Step 1:  Load and tokenise the corpus from the specified data directory.
+
+Step 2:  Subdivide the corpus according to the authors.
+
+Step 3:  Extract articles H59, H60, H61, H65, M37, M38, M47, M48 and Q54.
+         Select six word-types (the, of, to, in, and, a)
+         to represent those articles and the query text with relative frequencies,
+         but the length corresponds to the total number of the six words.
+
+
+Step 4:  Define a user-defined function to compute the distance
+         according to the Manhattan and Euclidian functions.
+         Compute the similarity according to the cosine.
+
+Step 5:  Is it always the same training article that is the closest or
+         presents the highest similarity with Q54?
+
+
+
