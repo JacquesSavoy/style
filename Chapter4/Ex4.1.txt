@@ -1,0 +1,18 @@
+
+Exercise #4.1: Applying the Sign test
+
+The roadmap is the following.
+
+
+Step 1:  Load the dataset SystemAB.txt.
+
+Step 2:  Count the number of experiments producing different results for System A and B.
+
+Step 3:  Count the number of times that System A performs better than System B.
+
+Step 4:  Apply the sign text.
+         Under H0, this is a binom.test with a probability of success = 0.5
+         What is your conclusion?
+
+Step 5:  And if we had 20 experiments, with 9 times A performing better than B?
+         And if we had 20 experiments, with 2 times A performing better than B?
